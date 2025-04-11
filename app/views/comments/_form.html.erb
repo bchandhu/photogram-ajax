@@ -1,5 +1,5 @@
 <li id="<%= dom_id(comment.photo) %>_<%= dom_id(comment) %>_form" class="list-group-item">
-  <%= form_with(model: comment, local: false) do |form| %>
+  <%= form_with(model: comment, local: true) do |form| %>
     <% if comment.errors.any? %>
       <div id="error_explanation">
         <ul class="list-unstyled">
@@ -18,11 +18,11 @@
 
     <div class="form-group mb-3">
       <%= form.label :body, class: "visually-hidden" %>
-      <%= form.text_area :body, class: "form-control" %>
+      <%= form.text_area :body, class: "form-control", name: "comment[body]", id: "comment_body" %>
     </div>
 
     <div class="actions d-grid gap-2">
-      <%= form.submit class: "btn btn-outline-secondary" %>
+      <%= form.submit "Create Comment", class: "btn btn-outline-secondary" %>
     </div>
   <% end %>
 </li>
